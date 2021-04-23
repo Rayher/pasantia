@@ -20,6 +20,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Grids from "./common/components/Examples/Grids";
 import Notificaciones from './common/components/Examples/Notificaciones';
 import ExampleTabs from './common/components/Examples/Tabs/Tabs';
+
+import ProfesionList from "./common/components/Profesion/ProfesonListContainer";
+import ProfesionCreate from "./common/components/Profesion/ProfesionCreateContainer";
+
+import ProfesorList from "./common/components/Profesor/ProfesorListContainer";
+import ProfesorCreate from "./common/components/Profesor/ProfesorCreateContainer";
+
+import ComponenteContainer from "./common/components/Ejemplo/ComponenteContainer";
+
 require('../style/index.css');
 
 module.exports = (
@@ -34,6 +43,21 @@ module.exports = (
                 <ProtectedRoute exact path="/grids" component={Grids} />
                 <ProtectedRoute exact path="/notifications" component={Notificaciones} />
                 <ProtectedRoute exact path="/tabs" component={ExampleTabs} />
+
+                <ProtectedRoute exact path="/profesions" component={ProfesionList} />
+                <ProtectedRoute exact path="/profesions/:id/editar" component={ProfesionCreate} />
+                <ProtectedRoute exact path="/profesions/:id/ver" component={ProfesionCreate} />
+                <ProtectedRoute exact path="/profesions/crear" component={ProfesionCreate} />
+                
+                <ProtectedRoute exact path="/profesors" component={ProfesorList} />
+                <ProtectedRoute exact path="/profesors/:id/editar" component={ProfesorCreate} />
+                <ProtectedRoute exact path="/profesors/:id/ver" component={ProfesorCreate} />
+                <ProtectedRoute exact path="/profesors/crear" component={ProfesorCreate} />
+
+
+                <ProtectedRoute exact path="/ejemplo" component={ComponenteContainer} />
+
+
                 <Route component={NotFound} />
             </Switch>
         </div>

@@ -22,13 +22,14 @@ class FileUploader extends Component {
         this.onDrop       = this.onDrop.bind(this);
         this.onFileChange = this.onFileChange.bind(this);
     }
+
     componentDidUpdate() {
         if (this.state.imageSrc === '' && this.props.source !== undefined && this.props.source !== null) {
             this.setState({imageSrc: this.props.source, loaded: true})
         }
     }
 
-    componentWillMount(){
+    componentWillMount(){          
         if (this.props.img !== null && this.props.img !== undefined){
             // setea la imágen si se le envia una
             this.setState({
@@ -38,12 +39,17 @@ class FileUploader extends Component {
             });
         }
     }
-    componentWillReceiveProps(nextProps){
+
+    componentWillReceiveProps(nextProps){       
         if (nextProps.img !== null && nextProps.img !== undefined){
+            const fileName = nextProps.img;
+            let extension = fileName.split('.').pop();
+
             // setea la imágen si se le envia una
             this.setState({
                 imageSrc: nextProps.img,
-                loaded: true
+                loaded: true,
+                isImage: extension == 'jpg' || extension == 'png' || extension == 'gif' ? true : false
             });
         }
     }
@@ -67,6 +73,7 @@ class FileUploader extends Component {
     }
 
     onFileChange(e, file) {
+        console.log("Se ejecuta onFileChange...");
         this.props.onFileChange(e, file);
         file = file || e.target.files[0];
         const pattern = /-*/;
@@ -112,6 +119,8 @@ class FileUploader extends Component {
                     ? props.overlayColor
                     : props.baseColor,
             hideIcon = state.loaded ? 0 : 1;
+
+        console.log("image state: ", this.state.imageSrc);
 
         return (
             <label

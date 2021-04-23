@@ -1,1 +1,3 @@
 from .user import UserSerializer, UserReadSerializer
+from .profesionSerializer import ProfesionSerializer, ProfesionRegisterSerializer
+from .profesorSerializer import ProfesorSerializer, ProfesorRegisterSerializer
